@@ -16,7 +16,7 @@ services:
     container_name: revive-apache
     command: /bin/bash -c "chown -R www-data:www-data /var/www/html && chmod -R 775 /var/www/html && apache2-foreground"
     volumes:
-      - ./:/var/www/html
+      - apache_data:/var/www/html
     ports:
       - "8080:80"
     environment:
@@ -28,6 +28,7 @@ services:
       - mysql
 volumes:
   mysql_data:
+  apache_data:
 networks:
   revive-net:
     driver: bridge
